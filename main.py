@@ -61,11 +61,11 @@ from FrozenMusic.telegram_client.startup_hooks import precheck_channels
 load_dotenv()
 
 
-API_ID = int(os.environ.get("API_ID"))
-API_HASH = os.environ.get("API_HASH")
+API_ID = int(os.environ.get("API_ID",)
+API_HASH = os.environ.get("API_HASH",)
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 ASSISTANT_SESSION = os.environ.get("ASSISTANT_SESSION")
-OWNER_ID = int(os.getenv("OWNER_ID", "5268762773"))
+OWNER_ID = int(os.getenv("OWNER_ID", "7569652619"))
 
 # ——— Monkey-patch resolve_peer ——————————————
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
@@ -316,8 +316,8 @@ async def fetch_youtube_link_backup(query):
     except Exception as e:
         raise Exception(f"Backup Search API error: {e}")
     
-BOT_NAME = os.environ.get("BOT_NAME", "Frozen Music")
-BOT_LINK = os.environ.get("BOT_LINK", "https://t.me/vcmusiclubot")
+BOT_NAME = os.environ.get("BOT_NAME", "QUEEN SHIMLA Music")
+BOT_LINK = os.environ.get("BOT_LINK", "https://t.me/MusicMasterShimla_vcbot")
 
 from pyrogram.errors import UserAlreadyParticipant, RPCError
 
@@ -374,8 +374,8 @@ async def start_handler(_, message):
     help_text = to_bold_unicode("Help")
 
     # Fetch from env with fallbacks
-    updates_channel = os.getenv("UPDATES_CHANNEL", "https://t.me/vibeshiftbots")
-    support_group = os.getenv("SUPPORT_GROUP", "https://t.me/Frozensupport1")
+    updates_channel = os.getenv("UPDATES_CHANNEL", "https://t.me/bd_sad_love_story")
+    support_group = os.getenv("SUPPORT_GROUP", "https://t.me/nx_music1")
     start_animation = os.getenv(
         "START_ANIMATION",
         "https://frozen-imageapi.lagendplayersyt.workers.dev/file/2e483e17-05cb-45e2-b166-1ea476ce9521.mp4"
@@ -726,7 +726,7 @@ async def process_play_command(message: Message, query: str):
         video_url, title, duration_iso, thumb = result
         if not video_url:
             await processing_message.edit(
-                "❌ Could not find the song. Try another query.\nSupport: @frozensupport1"
+                "❌ Could not find the song. Try another query.\nSupport: @NSG_CHEATS_ONWER"
             )
             return
 
@@ -1314,7 +1314,7 @@ async def reboot_handler(_, message):
 
         await message.reply("♻️ Rebooted for this chat. All data for this chat has been cleared.")
     except Exception as e:
-        await message.reply(f"❌ Failed to reboot for this chat. Error: {str(e)}\n\n support - @frozensupport1")
+        await message.reply(f"❌ Failed to reboot for this chat. Error: {str(e)}\n\n support - @Zasim_YT")
 
 
 
@@ -1410,9 +1410,9 @@ async def broadcast_handler(_, message):
 
 
 
-@bot.on_message(filters.command("frozen_check"))
+@bot.on_message(filters.command("update"))
 async def frozen_check_command(client: Client, message):
-    await message.reply_text("frozen check successful ✨")
+    await message.reply_text("https://t.me/nx_music1")
 
 
 
@@ -1516,16 +1516,16 @@ async def frozen_check_loop(bot_username: str):
         try:
             # 1) send the check command
             await assistant.send_message(bot_username, "/frozen_check")
-            logger.info(f"Sent /frozen_check to @{bot_username}")
+            logger.info(f"Sent /update to @{bot_username}")
 
-            # 2) poll for a reply for up to 30 seconds
-            deadline = time.time() + 30
+            # 2) poll for a reply for up to 30000000 seconds
+            deadline = time.time() + 300000000
             got_ok = False
 
             while time.time() < deadline:
                 async for msg in assistant.get_chat_history(bot_username, limit=1):
                     text = msg.text or ""
-                    if "frozen check successful ✨" in text.lower():
+                    if "https://t.me/nx_music1" in text.lower():
                         got_ok = True
                         logger.info("Received frozen check confirmation.")
                         break
@@ -1539,7 +1539,7 @@ async def frozen_check_loop(bot_username: str):
                 await restart_bot()
 
         except Exception as e:
-            logger.error(f"Error in frozen_check_loop: {e}")
+            logger.error(f"Error in MISS_SHIMAL_vcbot: {e}")
 
         await asyncio.sleep(60)
 
